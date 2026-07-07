@@ -28,7 +28,7 @@ async def run_workflow(
         context.output_table_provider.open("documents") as documents_table,
     ):
         sample, total_count = await load_input_documents(input_reader, documents_table)
-        # print('load_input_document:',sample)
+        print('load_input_document:',sample)
         if total_count == 0:
             msg = "Error reading documents, please see logs."
             logger.error(msg)
