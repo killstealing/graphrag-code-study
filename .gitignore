@@ -1,0 +1,251 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+dist/
+build/
+eggs/
+sdist/
+wheels/
+*.whl
+pip-wheel-metadata/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===== Virtual environments =====
+.venv/
+venv/
+env/
+.env/
+.venv*/
+venv*/
+env*/
+.conda/
+.conda-*
+python/*/lib/
+
+# ===== uv =====
+.venv/
+uv.lock
+
+# ===== Environment & Secrets =====
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+credentials.json
+credentials.*.json
+secrets.yaml
+secrets.yml
+appsettings.*.json
+!.env.test
+
+# ===== IDE & Editors =====
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim/Neovim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+*.vim
+Session.vim
+Sessionx.vim
+.netrwhist
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+*#
+.dir-locals.el
+TAGS
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Eclipse / Spring Tool Suite
+.classpath
+.project
+.settings/
+.springBeans
+
+# NetBeans
+nbproject/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Cursor
+.cursor/
+
+# Windsurf
+.windsurf/
+
+# CodeRabbit
+.coderabbit.yaml
+
+# ===== OS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===== Testing & Coverage =====
+.coverage
+.coverage.*
+coverage/
+coverage.xml
+*.cover
+*.py,cover
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.hypothesis/
+.benchmarks/
+tests/fixtures/cache
+tests/fixtures/*/cache
+tests/fixtures/*/output
+
+# ===== Linting & Type Checking =====
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.pyright-cache/
+.deptry-cache/
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+.jupyter/
+jupyter_config.json
+.ipython/
+.kernel/
+examples_notebooks/*/data
+packages/graphrag-llm/notebooks/metrics
+packages/graphrag-llm/notebooks/cache
+packages/graphrag-*/example_notebooks/**/output
+packages/graphrag-*/example_notebooks/**/cache
+
+# ===== GraphRAG =====
+output/
+output/lancedb/
+cache/
+logs/
+ragtest/
+.ragtest/
+
+# ===== Logs =====
+*.log
+*.log.*
+*.log.gz
+logs/
+log/
+
+# ===== mkdocs =====
+site/
+
+# ===== Docs =====
+docsite/
+.yarn/
+.pnp*
+
+# ===== Azure / Azurite =====
+temp_azurite/
+__azurite*.json
+__blobstorage*.json
+__blobstorage__/
+
+# ===== Root build assets =====
+packages/*/LICENSE
+
+# ===== Build artifacts =====
+build.zip
+.pipeline
+.pipelines
+
+# ===== Turbo =====
+.turbo/
+
+# ===== Docker =====
+.docker/
+docker-compose.override.yml
+
+# ===== Temp & Misc =====
+.tmp/
+.tmp.*
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.old
+*.swp
+*.swo
+*_backup/
+.backup/
+~$*
