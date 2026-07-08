@@ -67,8 +67,14 @@ async def extract_graph(
             relationship_dfs.append(result[1])
 
     entities = _merge_entities(entity_dfs)
+    print("==entities==")
+    print(entities)
     relationships = _merge_relationships(relationship_dfs)
+    print("==relationships _merge_relationships==")
+    print(relationships)
     relationships = filter_orphan_relationships(relationships, entities)
+    print("==relationships filter_orphan_relationships==")
+    print(relationships)
 
     return (entities, relationships)
 

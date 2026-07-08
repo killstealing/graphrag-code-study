@@ -53,7 +53,7 @@ class PipelineFactory:
 _standard_workflows = [
     "create_base_text_units",
     "create_final_documents",
-    # "extract_graph",
+    "extract_graph",
     # "finalize_graph",
     # "extract_covariates",
     # "create_communities",
