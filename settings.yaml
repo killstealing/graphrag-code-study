@@ -31,7 +31,7 @@ input:
 
 chunking:
   type: tokens
-  size: 1200
+  size: 300
   overlap: 100
   encoding_model: o200k_base
 

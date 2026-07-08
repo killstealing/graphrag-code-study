@@ -51,7 +51,7 @@ class PipelineFactory:
 # --- Register default implementations ---
 # workflows define, we can comment them to debug
 _standard_workflows = [
-    # "create_base_text_units",
+    "create_base_text_units",
     # "create_final_documents",
     # "extract_graph",
     # "finalize_graph",
