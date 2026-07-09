@@ -58,7 +58,7 @@ _standard_workflows = [
     "extract_covariates",
     "create_communities",
     "create_final_text_units",
-    # "create_community_reports",
+    "create_community_reports",
     # "generate_text_embeddings",
 ]
 _fast_workflows = [
