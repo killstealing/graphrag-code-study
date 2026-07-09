@@ -59,7 +59,7 @@ _standard_workflows = [
     "create_communities",
     "create_final_text_units",
     "create_community_reports",
-    # "generate_text_embeddings",
+    "generate_text_embeddings",
 ]
 _fast_workflows = [
     "create_base_text_units",
