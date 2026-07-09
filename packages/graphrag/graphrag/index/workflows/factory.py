@@ -55,9 +55,9 @@ _standard_workflows = [
     "create_final_documents",
     "extract_graph",
     "finalize_graph",
-    # "extract_covariates",
-    # "create_communities",
-    # "create_final_text_units",
+    "extract_covariates",
+    "create_communities",
+    "create_final_text_units",
     # "create_community_reports",
     # "generate_text_embeddings",
 ]
