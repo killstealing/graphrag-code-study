@@ -292,13 +292,21 @@ def local_search_streaming(
 
     msg = f"Vector Store Args: {redact(config.vector_store.model_dump())}"
     logger.debug(msg)
-
+    print("步骤2： 加载向量数据库")
     description_embedding_store = get_embedding_store(
         config=config.vector_store,
         embedding_name=entity_description_embedding,
     )
 
+    # 读取实体对象
     entities_ = read_indexer_entities(entities, communities, community_level)
+    
+    if entities_:
+        first_entity=entities_[0]
+        print("步骤3： 打印其中一个实体对象的信息:")
+        print("-"*80)
+        print(f"实体 {first_entity}")
+    
     covariates_ = read_indexer_covariates(covariates) if covariates is not None else []
     prompt = load_search_prompt(config.local_search.prompt)
 
