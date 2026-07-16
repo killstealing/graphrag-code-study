@@ -64,6 +64,9 @@ def map_query_to_entities(
             text_embedder=lambda t: text_embedder.embedding(input=[t]).first_embedding,
             k=k * oversample_scaler,
         )
+        print(f"步骤5： 获取到与查询相关的实体，并进行过滤和排序。")
+        print(f"候选实体实例： {search_results[0].document.id}, {search_results[0].document.data}")
+        print(f"候选实体数量： {len(search_results)}")
         for result in search_results:
             if embedding_vectorstore_key == EntityVectorStoreKey.ID and isinstance(
                 result.document.id, str
@@ -82,6 +85,7 @@ def map_query_to_entities(
         matched_entities = all_entities[:k]
 
     # filter out excluded entities
+    # 如果提供了exclude_entity_names列表，可以将这些实体过滤掉
     if exclude_entity_names:
         matched_entities = [
             entity

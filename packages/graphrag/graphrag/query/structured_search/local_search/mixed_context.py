@@ -145,6 +145,9 @@ class LocalSearchMixedContext(LocalContextBuilder):
             k=top_k_mapped_entities,
             oversample_scaler=2,
         )
+        
+        print(f"步骤6： 最终获取到的实体列表")
+        print(f"映射到的实体示例(以第一个为例): {selected_entities[0]}")
 
         # build context
         final_context = list[str]()
