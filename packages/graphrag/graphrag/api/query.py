@@ -309,8 +309,12 @@ def local_search_streaming(
     
     covariates_ = read_indexer_covariates(covariates) if covariates is not None else []
     prompt = load_search_prompt(config.local_search.prompt)
-
+    print(f"步骤4： 获取到执行本地搜索的提示词，在settings.xml中的local_search中定义： \n  \n ")
+    print(prompt)
+    print("-"*80)
+    
     logger.debug("Executing streaming local search query: %s", query)
+    # TODO  核心的题试题里面的数据表的构建逻辑
     search_engine = get_local_search_engine(
         config=config,
         reports=read_indexer_reports(community_reports, communities, community_level),
