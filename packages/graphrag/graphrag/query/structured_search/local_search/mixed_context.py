@@ -256,6 +256,10 @@ class LocalSearchMixedContext(LocalContextBuilder):
             if community.attributes is None:
                 community.attributes = {}
             community.attributes["matches"] = community_matches[community.community_id]
+        
+        # TODO 按匹配度和社区自身排名双重排序
+        # 主要排序标准：被实体引用的频率（匹配度)
+        # 次要排序标准：社区自身的重要性排名
         selected_communities.sort(
             key=lambda x: (x.attributes["matches"], x.rank),  # type: ignore
             reverse=True,  # type: ignore
