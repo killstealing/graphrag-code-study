@@ -144,13 +144,20 @@ def run_local_search(
             "covariates",
         ],
     )
-
     communities: pd.DataFrame = dataframe_dict["communities"]
     community_reports: pd.DataFrame = dataframe_dict["community_reports"]
     text_units: pd.DataFrame = dataframe_dict["text_units"]
     relationships: pd.DataFrame = dataframe_dict["relationships"]
     entities: pd.DataFrame = dataframe_dict["entities"]
     covariates: pd.DataFrame | None = dataframe_dict["covariates"]
+
+    print("步骤1: 读取索引输出文件的详细信息")
+    print(f"communities : {communities}")
+    print(f"community_reports : {community_reports}")
+    print(f"text_units : {text_units}")
+    print(f"relationships : {relationships}")
+    print(f"entities : {entities}")
+    print(f"covariates : {covariates}")
 
     if streaming:
 
