@@ -157,9 +157,14 @@ class LocalSearch(BaseSearch[LocalContextBuilder]):
             **self.context_builder_params,
         )
         logger.debug("GENERATE ANSWER: %s. QUERY: %s", start_time, query)
+        
+        
+        
         search_prompt = self.system_prompt.format(
             context_data=context_result.context_chunks, response_type=self.response_type
         )
+        
+        print("步骤7： 完整的提示词模块内容： "+search_prompt)
 
         messages_builder = (
             CompletionMessagesBuilder()
