@@ -123,9 +123,11 @@ def read_indexer_entities(
     community_level: int | None,
 ) -> list[Entity]:
     """Read in the Entities from the raw indexing outputs."""
+    # 使用explore方法将communities中的entity_ids列展开，扁平化
     community_join = communities.explode("entity_ids").loc[
         :, ["community", "level", "entity_ids"]
     ]
+    # TODO 使用社区的id和entity_ids连接 这一步的目的是给每个实体打上它所属的社区标签，为后续按社区查询和聚合做准备
     nodes_df = entities.merge(
         community_join, left_on="id", right_on="entity_ids", how="left"
     )
