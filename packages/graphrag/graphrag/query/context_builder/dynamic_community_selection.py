@@ -54,13 +54,17 @@ class DynamicCommunitySelection:
         self.max_level = max_level
         self.semaphore = asyncio.Semaphore(concurrent_coroutines)
         self.model_params = model_params if model_params else {}
-
+        # 连续构建 三个关键映射
+        # 1 社区ID到社区报告的映射
         self.reports = {report.community_id: report for report in community_reports}
+        # 2 社区短ID到社区对象的映射 
         self.communities = {community.short_id: community for community in communities}
 
         # mapping from level to communities
+        # 层级到社区列表的映射
         self.levels: dict[str, list[str]] = {}
 
+        # 构建层级映射
         for community in communities:
             if community.level not in self.levels:
                 self.levels[community.level] = []
@@ -68,6 +72,7 @@ class DynamicCommunitySelection:
                 self.levels[community.level].append(community.short_id)
 
         # start from root communities (level 0)
+        # 从根节点开始遍历
         self.starting_communities = self.levels["0"]
 
     async def select(self, query: str) -> tuple[list[CommunityReport], dict[str, Any]]:
@@ -81,6 +86,7 @@ class DynamicCommunitySelection:
         queue = deepcopy(self.starting_communities)
         level = 0
 
+        # 存储每个社区的评分
         ratings = {}  # store the ratings for each community
         llm_info: dict[str, Any] = {
             "llm_calls": 0,
@@ -88,9 +94,11 @@ class DynamicCommunitySelection:
             "output_tokens": 0,
         }
         relevant_communities = set()
-
+        # 广度优先遍历与评分
         while queue:
+            # 使用异步并行处理，同时评估多个社区的相关性
             gather_results = await asyncio.gather(*[
+                # 该函数使用大模型来评估查询与社区描述之间的相关性，返回0-5的评分值
                 rate_relevancy(
                     query=query,
                     description=(
@@ -138,8 +146,11 @@ class DynamicCommunitySelection:
                     # remove parent node if the current node is deemed relevant
                     if not self.keep_parent and community in self.communities:
                         relevant_communities.discard(self.communities[community].parent)
+            # 下一轮评估的社区只包含当前相关社区的子社区
             queue = communities_to_rate
             level += 1
+            # 回退策略
+            # 如果在当前路径上找不到相关社区，算法会尝试探索下一个层级的所有社区，这也是一种启发式决策、
             if (
                 (len(queue) == 0)
                 and (len(relevant_communities) == 0)
