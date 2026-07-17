@@ -44,7 +44,7 @@ def run_global_search(
         root_dir=root_dir,
         cli_overrides=cli_overrides,
     )
-
+    #  TODO 加载文件
     dataframe_dict = _resolve_output_files(
         config=config,
         output_list=[
@@ -58,6 +58,17 @@ def run_global_search(
     entities: pd.DataFrame = dataframe_dict["entities"]
     communities: pd.DataFrame = dataframe_dict["communities"]
     community_reports: pd.DataFrame = dataframe_dict["community_reports"]
+    
+    print(f"步骤1： 读取索引输出文件的详细信息：")
+    print(f"文件名： entities.parquet, 例： {list(entities.columns)} 行数： {len(entities)}")
+    print(f"文件名： communities.parquet, 例： {list(communities.columns)} 行数： {len(communities)}")
+    print(f"文件名： community_reports.parquet, 例： {list(community_reports.columns)} 行数： {len(community_reports)}")
+
+    unique_communities=communities[['community','level']].drop_duplicates()
+    
+    # 打印去重后的社区及其等级
+    for index,row in unique_communities.iterrows():
+        print(f"社区： {row['community']}, 等级： {row['level']}")
 
     if streaming:
 

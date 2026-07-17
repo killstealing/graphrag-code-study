@@ -447,6 +447,7 @@ def _query_cli(
                 query=query,
                 verbose=verbose,
             )
+            # 全局搜索
         case SearchMethod.GLOBAL:
             run_global_search(
                 data_dir=data,

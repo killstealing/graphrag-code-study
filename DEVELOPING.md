@@ -117,3 +117,9 @@ and then in your bashrc, add
 Make sure you have python3.10-dev installed or more generally `python<version>-dev`
 
 `sudo apt-get install python3.10-dev`
+
+
+
+poe query --root ./ --method local  "华为公司都有哪些产品"
+
+poe query --root ./ --method global  "华为公司都有哪些产品"
