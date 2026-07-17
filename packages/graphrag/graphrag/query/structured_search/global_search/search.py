@@ -241,6 +241,7 @@ class GlobalSearch(BaseSearch[GlobalContextBuilder]):
                     **llm_kwargs,
                 )
                 search_response = await gather_completion_response_async(model_response)
+                print(f"步骤5: map阶段的最终响应： {search_response}")
                 logger.debug("Map response: %s", search_response)
             try:
                 # parse search response json
