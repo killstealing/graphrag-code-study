@@ -106,6 +106,7 @@ async def global_search(
     local_callbacks.on_context = on_context
     callbacks.append(local_callbacks)
 
+    # TODO
     logger.debug("Executing global search query: %s", query)
     async for chunk in global_search_streaming(
         config=config,
@@ -157,16 +158,32 @@ def global_search_streaming(
     """
     init_loggers(config=config, verbose=verbose, filename="query.log")
 
+    #  TODO 读取社区信息
     communities_ = read_indexer_communities(communities, community_reports)
+    print("步骤2： 打印社区信息")
+    print(communities_)
+    
+    # TODO 读取社区报告
     reports = read_indexer_reports(
         community_reports,
         communities,
         community_level=community_level,
         dynamic_community_selection=dynamic_community_selection,
     )
+    
+    # 打印格式化的报告
+    print("步骤3： 格式化社区报告：")
     entities_ = read_indexer_entities(
         entities, communities, community_level=community_level
     )
+    
+    # 打印第一个entities的信息
+    if entities_:
+        first_entity=entities_[0]
+        print("步骤4： 打印第一个实体对象的信息")
+        print(f"实体： {first_entity}")
+    else:
+        print("没有找到任何实体") 
     map_prompt = load_search_prompt(config.global_search.map_prompt)
     reduce_prompt = load_search_prompt(config.global_search.reduce_prompt)
     knowledge_prompt = load_search_prompt(config.global_search.knowledge_prompt)
